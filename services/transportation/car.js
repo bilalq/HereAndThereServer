@@ -1,3 +1,3 @@
 module.exports = function(origin, destination) {
-  return direction(origin, destination, 'transit');
+  return direction(origin, destination, 'driving');
 };
