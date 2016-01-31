@@ -1,3 +1,3 @@
-module.exports = function(req, res) {
-	res.send('working');
+module.exports = function(req, callback) {
+  return;
 }
