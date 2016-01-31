@@ -19,6 +19,8 @@ module.exports = function(origin, destination, travelMode) {
       destination,
       function(err, result) {
         if(result.status === 'OK') {
+          var leg = reslt.routes[0].leg[0];
+
           resolve(result.routes[0]);
         } else {
           reject(result.status); 
