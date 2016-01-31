@@ -5,10 +5,10 @@ module.exports = function(req, res) {
     return res.status(400).send('Please enter a location');
   }
 
-  atob(req).then(function(response) {
+  atob(req.query.origin, req.query.destination).then(function(response) {
     res.send(response);
   }).catch(function(err) {
-    return res.status(500).send("Having some trouble getting atob rankings, " + err.stack)});
+    return res.status(500).send("Having some trouble getting atob rankings.")});
 
 }
 
