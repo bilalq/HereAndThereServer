@@ -8,8 +8,13 @@ module.exports = function(origin, startDate, endDate, callback) {
 		qs: {
 			apikey: 'Yh5B7Is6s91ey3vZXvdY5IOWsMldQXcq',	
 
-			location: origin
+			location: origin,
+
+
 		}
 	}
 	return request.get(options);
 }
+
+
+
