@@ -29,7 +29,7 @@
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
     "serve-favicon": "~2.3.0",
-    "tspsolver": "0.0.2"
+    "tspsolver": "0.0.2",
     "request-promise": "^2.0.0",
     "serve-favicon": "~2.3.0"
   },
