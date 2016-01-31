@@ -18,7 +18,6 @@ module.exports = function(origin, destination, travelMode) {
       origin,
       destination,
       function(err, result) {
-         console.log('Successful, ' + result.routes.length + 'results');
         if(result.status === 'OK') {
           resolve(result.routes[0]);
         } else {
