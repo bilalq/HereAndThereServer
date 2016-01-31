@@ -1,13 +1,14 @@
 var atob = require('../services/atob');
 
 module.exports = function(req, res) {
-  atob(req, function(err, path) {
-    if(err) {
-      res.status(500).send("Having some trouble getting atob rankings");
-      return;
-    }
+  if (req.query.origin == null || req.query.destination == null) {
+    return res.status(400).send('Please enter a location');
+  }
 
-    res.send(path);
-    return;
-  });
+  atob(req).then(function(response) {
+    res.send(response);
+  }).catch(function(err) {
+    return res.status(500).send("Having some trouble getting atob rankings, " + err.stack)});
+
 }
+
