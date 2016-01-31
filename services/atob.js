@@ -1,19 +1,21 @@
-var googleMaps = require('./transportation/googleMaps');
+var bike = require("./transportation/bike");
+var bus = require("./transportation/bus");
+var car = require("./transportation/car");
+var walk = require("./transportation/walk");
+var bike = require("./transportation/bike");
 var Promise = require('bluebird');
 
 var compareTransportation = function(a, b) {
   return a;
 }
 
-module.exports = function(req) {
-  origin = req.query.origin;
-  destination = req.query.destination;
+module.exports = function(origin, destination) {
+  directionsPromises = [walk(origin, destination),
+                        bus(origin, destination),
+                        bike(origin, destination),
+                        car(origin, destination)]
 
-  var walkP = googleMaps.getWalkTime(origin, destination);
-
-  var busP = googleMaps.getBusTime(origin, destination);
-
-  return Promise.all([walkP, busP]).then(function(trans) {
-    return trans.sort(compareTransportation)[0];
+  return Promise.all(directionsPromises).then(function(directions) {
+    return directions.sort(compareTransportation);
   });
 }

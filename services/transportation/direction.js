@@ -12,6 +12,16 @@ var publicConfig = {
 gm.config('google-private-key', secrets.googleKey);
 */
 
+var cleanOutput = function(travelMode, route) {
+  return {
+    type: travelMode,
+    time: route.legs[0].duration.value,
+    distance: route.legs[0].distance.value,
+    cost: 0,
+    extra: route
+  }
+};
+
 module.exports = function(origin, destination, travelMode) {
   return new Promise(function(resolve, reject) {
     gm.directions(
@@ -19,7 +29,7 @@ module.exports = function(origin, destination, travelMode) {
       destination,
       function(err, result) {
         if(result.status === 'OK') {
-          resolve(result.routes[0]);
+          resolve(cleanOutput(travelMode, result.routes[0]));
         } else {
           reject(result.status); 
         }
