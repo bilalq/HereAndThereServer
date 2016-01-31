@@ -8,7 +8,7 @@ module.exports = function(addresses) {
   tsp.startOver();
 
   //stub addresses
-  if(true){
+  if(false){
     addresses = [
       "1100 NE Campus Pkwy #200, Seattle, WA 98105",
       "7400 Sand Point Way NE, Seattle, WA 98115",
